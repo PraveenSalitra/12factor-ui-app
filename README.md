@@ -1,8 +1,6 @@
-# ## Environment Variables
+# ## Dependency List and healthchecks
 
-## Have a templated config for constants outside the core code
-## Have a `.env` file but don't put it in version control
-## `envsubst` utility is bundled with alpine docker image
-## Provide environment variable values at the run time (`docker run --env MYVAR1=foo`)
+## Generate a healthz.json using the following command during the build
+`npm ls --depth=0 --json | jq ".status=\"green\"|.buildDate=\"$BUILD_DATE\"|.gitHash=\"$GIT_HASH\"" > healthz.json`
 
-## Local environments?
+## Configure nginx route for the `/healthz` path

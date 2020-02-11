@@ -4,6 +4,7 @@ RUN rm /usr/share/nginx/html/*.html
 COPY build/ /usr/share/nginx/html/
 
 COPY envars.tmpl.js /usr/share/nginx/html/envars.tmpl.js
+COPY healthz.json /usr/share/nginx/html/healthz.json
 
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf

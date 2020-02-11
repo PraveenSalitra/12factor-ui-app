@@ -1,0 +1,44 @@
+{
+  "name": "ui-app",
+  "version": "0.1.0",
+  "dependencies": {
+    "@testing-library/jest-dom": {
+      "version": "4.2.4",
+      "from": "@testing-library/jest-dom@^4.2.4",
+      "resolved": "https://registry.npmjs.org/@testing-library/jest-dom/-/jest-dom-4.2.4.tgz"
+    },
+    "@testing-library/react": {
+      "version": "9.4.0",
+      "from": "@testing-library/react@^9.3.2",
+      "resolved": "https://registry.npmjs.org/@testing-library/react/-/react-9.4.0.tgz"
+    },
+    "@testing-library/user-event": {
+      "version": "7.2.1",
+      "from": "@testing-library/user-event@^7.1.2",
+      "resolved": "https://registry.npmjs.org/@testing-library/user-event/-/user-event-7.2.1.tgz"
+    },
+    "envsub": {
+      "version": "4.0.7",
+      "from": "envsub",
+      "resolved": "https://registry.npmjs.org/envsub/-/envsub-4.0.7.tgz"
+    },
+    "react": {
+      "version": "16.12.0",
+      "from": "react",
+      "resolved": "https://registry.npmjs.org/react/-/react-16.12.0.tgz"
+    },
+    "react-dom": {
+      "version": "16.12.0",
+      "from": "react-dom",
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-16.12.0.tgz"
+    },
+    "react-scripts": {
+      "version": "3.3.1",
+      "from": "react-scripts",
+      "resolved": "https://registry.npmjs.org/react-scripts/-/react-scripts-3.3.1.tgz"
+    }
+  },
+  "status": "green",
+  "buildDate": "Tue Feb 11 13:36:27 CST 2020",
+  "gitHash": "db6954a29ba6d55c017df63bcc5cd1674b4d174f"
+}
