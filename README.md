@@ -1,13 +1,8 @@
-# ##Environment Variables baked at Build Time##
+# ## Environment Variables
 
-https://create-react-app.dev/docs/adding-custom-environment-variables/
-
-## Create `env` variables with prefix `REACT_APP_`
+## Have a templated config for constants outside the core code
 ## Have a `.env` file but don't put it in version control
-## Use `process.env.<ENV_VAR_NAME>` in the code
-## Or, Use `%ENV_VAR_NAME%` in the HTML code
-## Run `npm run start` or `npm run build` and inspect the generated static files
+## `envsubst` utility is bundled with alpine docker image
+## Provide environment variable values at the run time (`docker run --env MYVAR1=foo`)
 
-## Problems? 
-
-
+## Local environments?

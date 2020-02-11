@@ -3,8 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-    console.log(process.env.REACT_APP_API_BASE_URL);
-    console.log(process.env.REACT_APP_THIRD_PARTY_PUBLIC_KEY);
+    console.log(window.ENVARS);
 
     return (
         <div className="App">
@@ -25,11 +24,10 @@ function App() {
             <section className="sidebar">
                 <h1>Environment Variables</h1>
                 <br/>
-                <h4>{process.env.REACT_APP_API_BASE_URL}</h4>
-                <h4>{process.env.REACT_APP_THIRD_PARTY_PUBLIC_KEY}</h4>
+                <h4>{window.ENVARS.API.BASE_URL}</h4>
+                <h4>{window.ENVARS.THIRD_PARTY_API.API_KEY}</h4>
             </section>
         </div>
-
     );
 }
 

@@ -11,7 +11,8 @@
     "react-scripts": "3.3.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run envars && react-scripts start",
+    "envars": "envsub --env-file ./.env.local ./envars.tmpl.js ./public/envars.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -30,5 +31,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "envsub": "^4.0.7"
   }
 }
