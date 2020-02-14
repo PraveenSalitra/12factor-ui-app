@@ -1,68 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Using Environment Variables baked at Build Time
+**Use Branch**: `cra-buildvars`
+https://create-react-app.dev/docs/adding-custom-environment-variables/
 
-## Available Scripts
+1. Create `env` variables with prefix `REACT_APP_`
+1. Have a `.env` file but don't put it in version control
+1. Use `process.env.<ENV_VAR_NAME>` in the code
+1. Or, Use `%ENV_VAR_NAME%` in the HTML code
+1. Run `npm run start` or `npm run build` and inspect the generated static files
+1. Problems: Cannot follow `build once, and deploy many` approach. Every environment needs a different build.
 
-In the project directory, you can run:
 
-### `npm start`
+## Using Environment Variables within nginx docker containers
+**Use Branch**: `envars`
+1. Have a templated config for constants outside the core code
+1. Have a `.env` file but don't put it in version control
+1. `envsubst` utility is bundled with alpine docker image
+1. Provide environment variable values at the run time (`docker run --env MYVAR1=foo`)
+1. Local environments: Use `.env.local` files along with a `npm` utility called `envsub` that works almost similar to `envsubst` above.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Generate Dependency List and healthchecks for nginx docker containers
+**Use Branch**: `deps`
+1. Generate a healthz.json using the following command during the build
+`npm ls --depth=0 --json | jq ".status=\"green\"|.buildDate=\"$BUILD_DATE\"|.gitHash=\"$GIT_HASH\"" > healthz.json`
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. Configure nginx route for the `/healthz` path
