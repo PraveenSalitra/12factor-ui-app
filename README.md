@@ -21,7 +21,7 @@ https://create-react-app.dev/docs/adding-custom-environment-variables/
 
 ## Generate Dependency List and healthchecks for nginx docker containers
 **Use Branch**: `deps`
-1. Generate a healthz.json using the following command during the build
+1. Generate a healthz.json using the following command during the build     
 `npm ls --depth=0 --json | jq ".status=\"green\"|.buildDate=\"$BUILD_DATE\"|.gitHash=\"$GIT_HASH\"" > healthz.json`
 
 1. Configure nginx route for the `/healthz` path
